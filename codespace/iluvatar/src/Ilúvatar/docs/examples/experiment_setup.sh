@@ -4,13 +4,15 @@
 # It is expecting to be run in the same directory as it is located.
 # You should have already ran the `setup.sh` script in the parent directory to install dependencies for the worker and load generator
 
-venv_name="examples-venv"
+# venv_name="examples-venv"
 
-sudo apt install -y jq python3-pip python3-venv
+# sudo apt install -y jq python3-pip python3-venv
+
 cargo install cross --git https://github.com/cross-rs/cross
-python3 -m pip install virtualenv
-python3 -m venv --clear $venv_name
-source ./$venv_name/bin/activate
+# python3 -m pip install virtualenv
+# python3 -m venv --clear $venv_name
+# source ./$venv_name/bin/activate
+source /home/exouser/venv/bin/activate
 python3 -m pip install --upgrade pip --no-warn-script-location
 python3 -m pip install -r ../../../load/reqs.txt --no-warn-script-location
 python3 -m pip install jupyterlab psutil

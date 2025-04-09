@@ -14,8 +14,8 @@ def read_image_as_bytes(path):
 channel = grpc.insecure_channel("127.0.0.1:8079")
 worker = pb2_grpc.IluvatarWorkerStub(channel)
 
-# Get your username (same as `whoami`)
-username = os.getlogin()  # or os.environ["USER"]
+# # Get your username (same as `whoami`)
+# username = os.getlogin()  # or os.environ["USER"]
 
 # Create the InvokeRequest
 # request = pb2.InvokeRequest(
@@ -24,30 +24,41 @@ username = os.getlogin()  # or os.environ["USER"]
 #     json_args=json.dumps({"name": username}),
 #     transaction_id=str(uuid.uuid4()),  # unique transaction ID
 # )
-
-image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.2.jpg")
+# model_name="shufflenet_v2_x0_5"
+image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.12.jpg")
 image_b64 = base64.b64encode(image_bytes).decode("utf-8")
-request = pb2.InvokeRequest(
-    function_name="resnet152",
-    function_version="1",
-    json_args=json.dumps({"model_name": 'resnet152','image_data':image_b64}),
-    transaction_id=str(uuid.uuid4()),  # unique transaction ID
-)
 
-# request = pb2.InvokeRequest(
-#     function_name="cnn",
-#     function_version="1",
-#     transaction_id=str(uuid.uuid4()),  # unique transaction ID
-# )
+model_list = ["shufflenet_v2_x0_5","mobilenet_v3_small","googlenet","resnext50_32x4d","densenet201","resnet152"]
+for model_name in model_list:
+
+    request = pb2.InvokeRequest(
+        function_name=model_name,
+        function_version="1",
+        json_args=json.dumps({"model_name": model_name,'image_data':image_b64}),
+        transaction_id=str(uuid.uuid4()),  # unique transaction ID
+    )
+
+    # request = pb2.InvokeRequest(
+    #     function_name="cnn",
+    #     function_version="1",
+    #     transaction_id=str(uuid.uuid4()),  # unique transaction ID
+    # )
+
+    # request = pb2.InvokeRequest(
+    #     function_name="Baixi",
+    #     function_version="1",
+    #     json_args=json.dumps({"name": username}),
+    #     transaction_id=str(uuid.uuid4()),  # unique transaction ID
+    # )
 
 
-# Invoke the function
-response = worker.invoke(request)
+    # Invoke the function
+    response = worker.invoke(request)
 
-# Print the result
-print("✅ Invocation response:")
-print("Success:", response.success)
-print("Result:", response.json_result)
-print("Duration (μs):", response.duration_us)
-print("Compute:", response.compute)
-print("Container state:", pb2.ContainerState.Name(response.container_state))
+    # Print the result
+    print("✅ Invocation response:")
+    print("Success:", response.success)
+    print("Result:", response.json_result)
+    print("Duration (μs):", response.duration_us)
+    print("Compute:", response.compute)
+    print("Container state:", pb2.ContainerState.Name(response.container_state))

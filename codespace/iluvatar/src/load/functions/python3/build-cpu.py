@@ -35,6 +35,7 @@ def build(path, function_name, dockerfile_base, basename, server):
   elif server == "unix":
       shutil.copy("socket_server.py", os.path.join(path,"server.py"))
   shutil.copy(dockerfile_base, path)
+  shutil.copy("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.7.jpg", os.path.join(path, "cat.2.jpg"))
   log_file = open(os.path.join(path, "build.log"), 'w')
 
   try:
@@ -53,6 +54,7 @@ def build(path, function_name, dockerfile_base, basename, server):
       push(function_name, log_file, server)
   finally:
     os.remove(os.path.join(path, "server.py"))
+    os.remove(os.path.join(path, "cat.2.jpg"))
     os.remove(os.path.join(path, dockerfile_base))
 
 if __name__ == "__main__":
