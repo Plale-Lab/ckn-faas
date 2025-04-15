@@ -5,6 +5,8 @@ import json
 import os
 import uuid
 import base64
+import time
+import random
 
 def read_image_as_bytes(path):
     with open(path, "rb") as f:
@@ -28,27 +30,30 @@ worker = pb2_grpc.IluvatarWorkerStub(channel)
 image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.12.jpg")
 image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
-model_list = ["shufflenet_v2_x0_5","mobilenet_v3_small","googlenet","resnext50_32x4d","densenet201","resnet152"]
-for model_name in model_list:
+model_list_total = ["shufflenet_v2_x0_5","mobilenet_v3_small","googlenet","resnext50_32x4d","densenet201","resnet152"]
+num_requests = 1
+start = time.perf_counter()
+for i in range(num_requests):
+    model_list = random.sample(model_list_total, 2)
+    for model_name in model_list:
+        request = pb2.InvokeRequest(
+            function_name=model_name,
+            function_version="1",
+            json_args=json.dumps({"model_name": model_name,'image_data':image_b64}),
+            transaction_id=str(uuid.uuid4()),  # unique transaction ID
+        )
 
-    request = pb2.InvokeRequest(
-        function_name=model_name,
-        function_version="1",
-        json_args=json.dumps({"model_name": model_name,'image_data':image_b64}),
-        transaction_id=str(uuid.uuid4()),  # unique transaction ID
-    )
+        # request = pb2.InvokeRequest(
+        #     function_name="cnn",
+        #     function_version="1",
+        #     transaction_id=str(uuid.uuid4()),  # unique transaction ID
+        # )
 
-    # request = pb2.InvokeRequest(
-    #     function_name="cnn",
-    #     function_version="1",
-    #     transaction_id=str(uuid.uuid4()),  # unique transaction ID
-    # )
-
-    # request = pb2.InvokeRequest(
-    #     function_name="Baixi",
-    #     function_version="1",
-    #     json_args=json.dumps({"name": username}),
-    #     transaction_id=str(uuid.uuid4()),  # unique transaction ID
+        # request = pb2.InvokeRequest(
+        #     function_name="Baixi",
+        #     function_version="1",
+        #     json_args=json.dumps({"name": username}),
+        #     transaction_id=str(uuid.uuid4()),  # unique transaction ID
     # )
 
 
@@ -62,3 +67,6 @@ for model_name in model_list:
     print("Duration (μs):", response.duration_us)
     print("Compute:", response.compute)
     print("Container state:", pb2.ContainerState.Name(response.container_state))
+end = time.perf_counter()
+print("Total time for {} requests: {} ms".format(num_requests,end-start))
+    # print(response)

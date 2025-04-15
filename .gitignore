@@ -71,6 +71,10 @@ instance/
 # Sphinx documentation
 docs/_build/
 
+*.pth
+*.tar.gz
+codespace/**/bin/
+
 # PyBuilder
 .pybuilder/
 target/

@@ -34,7 +34,24 @@ print(pb2.RegisterRequest.DESCRIPTOR.fields_by_name.keys())
 #     isolate=1,
 #     container_server=0
 # )
-# model_name="shufflenet_v2_x0_5"
+# model_name="resnet18"
+
+# request = pb2.RegisterRequest(
+#         function_name=model_name,
+#         function_version="1",
+#         image_name="docker.io/sunbaixi96/ckn_faas_{}-iluvatar-action-http:latest".format(model_name),
+#         memory=1024,
+#         cpus=1,
+#         parallel_invokes=1,
+#         transaction_id=str(uuid.uuid4()),
+#         language=pb2.LanguageRuntime.PYTHON3,
+#         compute=1,        # or appropriate platform ID
+#         isolate=1,
+#         container_server=0
+#     )
+
+
+
 model_list = ["shufflenet_v2_x0_5","mobilenet_v3_small","googlenet","resnext50_32x4d","densenet201","resnet152"]
 
 for model_name in model_list:
@@ -42,7 +59,7 @@ for model_name in model_list:
         function_name=model_name,
         function_version="1",
         image_name="docker.io/sunbaixi96/ckn_faas_{}-iluvatar-action-http:latest".format(model_name),
-        memory=1024,
+        memory=128,
         cpus=1,
         parallel_invokes=1,
         transaction_id=str(uuid.uuid4()),
