@@ -22,11 +22,11 @@ print(pb2.RegisterRequest.DESCRIPTOR.fields_by_name.keys())
 # )
 
 # request = pb2.RegisterRequest(
-#     function_name="cnn",
+#     function_name="mobilenet_v3_small",
 #     function_version="1",
-#     image_name="docker.io/alfuerst/cnn_image_classification-iluvatar-action:latest",
+#     image_name="docker.io/sunbaixi96/ckn_faas_mobilenet_v3_small-iluvatar-action-http:latest",
 #     memory=512,
-#     cpus=2,
+#     cpus=1,
 #     parallel_invokes=1,
 #     transaction_id=str(uuid.uuid4()),
 #     language=pb2.LanguageRuntime.PYTHON3,
@@ -59,7 +59,7 @@ for model_name in model_list:
         function_name=model_name,
         function_version="1",
         image_name="docker.io/sunbaixi96/ckn_faas_{}-iluvatar-action-http:latest".format(model_name),
-        memory=128,
+        memory=512,
         cpus=1,
         parallel_invokes=1,
         transaction_id=str(uuid.uuid4()),

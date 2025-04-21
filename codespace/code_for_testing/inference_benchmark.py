@@ -8,15 +8,21 @@ from PIL import Image
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-model_name = "resnet18"
+model_name = "googlenet"
 
-def load_model(model_name):
-    model = torch.hub.load('pytorch/vision:v0.10.0', model_name, pretrained=True)
-    model.eval()
-    return model.to(device)
+# def load_model(model_name):
+#     model = torch.hub.load('pytorch/vision:v0.10.0', model_name, pretrained=True)
+#     model.eval()
+#     return model.to(device)
 
 
-model = load_model(model_name)
+# model = load_model(model_name)
+model_path = '/home/exouser/ckn-faas/codespace/iluvatar/src/load/functions/python3/functions/ckn_faas_googlenet/model_googlenet.pth'
+
+model = models.googlenet(aux_logits=False)
+model.load_state_dict(torch.load(model_path))
+model.eval()
+
 
 def pre_process(image):
     """
@@ -35,13 +41,13 @@ def pre_process(image):
     input_batch = input_tensor.unsqueeze(0)
     return input_batch
 
-filename = "/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.3.jpg"
+filename = "/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.12.jpg"
 
 image = Image.open(filename)
 preprocessed_input = pre_process(image)
 
 with torch.no_grad():
-    output = model(input)
+    output = model(preprocessed_input)
 prob = torch.nn.functional.softmax(output[0], dim=0)
 def load_imagenet_labels():
     with open("/home/exouser/ckn-faas/codespace/ckn/jetsons/server/imagenet_classes.txt") as f:
