@@ -13,6 +13,9 @@ def read_image_as_bytes(path):
     with open(path, "rb") as f:
         return f.read()
 
+def QoED_test():
+    
+
 def send_request(worker, model_name, image_b64):
     request = pb2.InvokeRequest(
         function_name=model_name,
@@ -37,7 +40,7 @@ def send_request(worker, model_name, image_b64):
 # Config
 model_list_total = ["shufflenet_v2_x0_5", "mobilenet_v3_small", "googlenet",
                     "resnext50_32x4d", "densenet201", "resnet152"]
-num_requests = 1  # Total request groups (each group sends 2 models)
+num_requests = 64  # Total request groups (each group sends 2 models)
 
 # Load image and connect
 image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.12.jpg")
@@ -48,11 +51,19 @@ worker = pb2_grpc.IluvatarWorkerStub(channel)
 
 # Prepare and send requests concurrently
 start = time.perf_counter()
+# futures = []
+# with ThreadPoolExecutor(max_workers=8) as executor:
+#     for _ in range(num_requests):
+#         model_list = random.sample(model_list_total, 2)
+#         for model_name in model_list:
+#             futures.append(executor.submit(send_request, worker, model_name, image_b64))
+
 futures = []
-with ThreadPoolExecutor(max_workers=8) as executor:
+with ThreadPoolExecutor(max_workers=16) as executor:
     for _ in range(num_requests):
         model_list = random.sample(model_list_total, 2)
         for model_name in model_list:
+            time.sleep(0.1)
             futures.append(executor.submit(send_request, worker, model_name, image_b64))
 
 # Collect results
@@ -63,7 +74,8 @@ for future in as_completed(futures):
         print("❌ Error:", res["error"])
     else:
         print("Success:", res["success"])
-        print("Result:", res["result"])
+        result_json = json.loads(res["result"])
+        print("Result:", result_json["body"]["Probability"])
         print("Duration (μs):", res["duration_us"])
         print("Compute:", res["compute"])
         print("Container state:", res["container_state"])

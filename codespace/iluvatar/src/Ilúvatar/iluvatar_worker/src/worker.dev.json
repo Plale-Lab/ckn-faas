@@ -78,6 +78,6 @@
     "log_folder": "/tmp/iluvatar/logs/"
   },
   "status": {
-    "report_freq_ms": 5000
+    "report_freq_ms": 1000
   }
 }
