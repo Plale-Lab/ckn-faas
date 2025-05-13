@@ -1,0 +1,65 @@
+on:
+  pull_request:
+
+name: Check and Lint
+env:
+  CROSS_NO_WARNINGS: 0
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./src/Ilúvatar
+
+jobs:
+  check:
+    name: Check compilation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: cargo install cross --git https://github.com/cross-rs/cross
+      - run: make check
+
+  fmt:
+    name: Ensure formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: rustup component add rustfmt
+      - run: make format-check
+
+  clippy:
+    name: Run Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: cargo install cross --git https://github.com/cross-rs/cross
+      - run: rustup component add clippy
+      - run: make clippy
+
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: cargo install cross --git https://github.com/cross-rs/cross
+      - run: make test

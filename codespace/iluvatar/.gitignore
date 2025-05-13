@@ -1,0 +1,8 @@
+src/Ilúvatar/target
+*.log
+__pycache__/*.lock
+**.lock
+**__pycache__**
+.idea/
+.vscode/
+dist/

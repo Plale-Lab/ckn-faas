@@ -5,7 +5,7 @@ import os
 import shutil
 
 argparser = argparse.ArgumentParser()
-argparser.add_argument("--repo", help="Repository the image will be in", required=False, default="sunbaixi96")
+argparser.add_argument("--repo", help="Repository the image will be in", required=False, default="alfuerst")
 argparser.add_argument("--hub", help="Hub to push docker image too", required=False, default="docker.io")
 argparser.add_argument("--version", help="Version to tag images with.", required=False, default="latest")
 argparser.add_argument("--skip-push", '-s', help="Don't push images to remote.", action="store_true")
@@ -22,7 +22,6 @@ def action_base():
 
 def docker_cmd(args, log_file=None):
   args.insert(0, "docker")
-  # print(args)
   completed = subprocess.run(args=args, stdout=log_file, stderr=log_file, text=True)
   completed.check_returncode()
 
@@ -35,7 +34,6 @@ def build(path, function_name, dockerfile_base, basename, server):
   elif server == "unix":
       shutil.copy("socket_server.py", os.path.join(path,"server.py"))
   shutil.copy(dockerfile_base, path)
-  shutil.copy("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.7.jpg", os.path.join(path, "cat.2.jpg"))
   log_file = open(os.path.join(path, "build.log"), 'w')
 
   try:
@@ -54,7 +52,6 @@ def build(path, function_name, dockerfile_base, basename, server):
       push(function_name, log_file, server)
   finally:
     os.remove(os.path.join(path, "server.py"))
-    os.remove(os.path.join(path, "cat.2.jpg"))
     os.remove(os.path.join(path, dockerfile_base))
 
 if __name__ == "__main__":

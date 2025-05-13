@@ -77,8 +77,8 @@ if [ "$LOAD" = "true" ]; then
   fi
 
   # python
-  # apt-get install -y python3-pip
-  source /home/exouser/venv/bin/activate
+  source ~/venvs/iluvatar/bin/activate
+  apt-get install -y python3-pip
   python3 -m pip install ansible numpy matplotlib pandas paramiko scp
 fi
 

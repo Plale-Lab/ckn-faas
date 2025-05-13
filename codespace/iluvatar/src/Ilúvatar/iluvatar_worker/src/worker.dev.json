@@ -9,7 +9,7 @@
     "timeout_sec": 6000,
     "mem_min_mb": 5,
     "mem_max_mb": 3096,
-    "cpu_max": 16
+    "cpu_max": 10
   },
   "influx": {
     "host": "http://localhost:8086",
@@ -42,13 +42,13 @@
   "container_resources": {
     "memory_mb": 20480,
     "eviction": "LRU",
-    "startup_timeout_ms": 30000,
+    "startup_timeout_ms": 10000,
     "memory_buffer_mb": 0,
     "pool_freq_ms": 500,
     "snapshotter": "overlayfs",
     "concurrent_creation": 5,
     "cpu_resource": {
-      "count": 8
+      "count": 4
     },
     "gpu_resource": {
       "count": 0
@@ -78,6 +78,6 @@
     "log_folder": "/tmp/iluvatar/logs/"
   },
   "status": {
-    "report_freq_ms": 1000
+    "report_freq_ms": 5000
   }
 }
