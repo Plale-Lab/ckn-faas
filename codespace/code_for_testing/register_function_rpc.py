@@ -53,6 +53,7 @@ worker = pb2_grpc.IluvatarWorkerStub(channel)
 
 
 model_list = ["shufflenet_v2_x0_5","mobilenet_v3_small","googlenet","resnext50_32x4d","densenet201","resnet152"]
+# model_list = ["shufflenet_v2_x0_5"]
 
 for model_name in model_list:
     if model_name == "resnet152":

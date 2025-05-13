@@ -39,7 +39,8 @@ username = os.getlogin()  # or os.environ["USER"]
 ## Sequentially invoke the function
 image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.12.jpg")
 image_b64 = base64.b64encode(image_bytes).decode("utf-8")
-model_list_total = ["shufflenet_v2_x0_5","mobilenet_v3_small","googlenet","resnext50_32x4d","densenet201","resnet152"]
+# model_list_total = ["shufflenet_v2_x0_5","mobilenet_v3_small","googlenet","resnext50_32x4d","densenet201","resnet152"]
+model_list_total = ["shufflenet_v2_x0_5"]
 for model_name in model_list_total:
     request = pb2.InvokeRequest(
             function_name=model_name,

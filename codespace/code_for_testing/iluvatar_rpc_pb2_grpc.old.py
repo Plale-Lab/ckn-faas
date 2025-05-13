@@ -5,7 +5,7 @@ import warnings
 
 import iluvatar_rpc_pb2 as iluvatar__rpc__pb2
 
-GRPC_GENERATED_VERSION = '1.71.0'
+GRPC_GENERATED_VERSION = '1.70.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -84,11 +84,6 @@ class IluvatarWorkerStub(object):
                 request_serializer=iluvatar__rpc__pb2.ListFunctionRequest.SerializeToString,
                 response_deserializer=iluvatar__rpc__pb2.ListFunctionResponse.FromString,
                 _registered_method=True)
-        self.est_invoke_time = channel.unary_unary(
-                '/iluvatar_rpc.IluvatarWorker/est_invoke_time',
-                request_serializer=iluvatar__rpc__pb2.EstInvokeRequest.SerializeToString,
-                response_deserializer=iluvatar__rpc__pb2.EstInvokeResponse.FromString,
-                _registered_method=True)
 
 
 class IluvatarWorkerServicer(object):
@@ -155,13 +150,6 @@ class IluvatarWorkerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def est_invoke_time(self, request, context):
-        """Returns the estimated E2E in seconds for each of the FQDNs when they are invoked concurrently.
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_IluvatarWorkerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -214,11 +202,6 @@ def add_IluvatarWorkerServicer_to_server(servicer, server):
                     servicer.list_registered_funcs,
                     request_deserializer=iluvatar__rpc__pb2.ListFunctionRequest.FromString,
                     response_serializer=iluvatar__rpc__pb2.ListFunctionResponse.SerializeToString,
-            ),
-            'est_invoke_time': grpc.unary_unary_rpc_method_handler(
-                    servicer.est_invoke_time,
-                    request_deserializer=iluvatar__rpc__pb2.EstInvokeRequest.FromString,
-                    response_serializer=iluvatar__rpc__pb2.EstInvokeResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -491,33 +474,6 @@ class IluvatarWorker(object):
             '/iluvatar_rpc.IluvatarWorker/list_registered_funcs',
             iluvatar__rpc__pb2.ListFunctionRequest.SerializeToString,
             iluvatar__rpc__pb2.ListFunctionResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def est_invoke_time(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/iluvatar_rpc.IluvatarWorker/est_invoke_time',
-            iluvatar__rpc__pb2.EstInvokeRequest.SerializeToString,
-            iluvatar__rpc__pb2.EstInvokeResponse.FromString,
             options,
             channel_credentials,
             insecure,
