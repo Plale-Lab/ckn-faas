@@ -1,0 +1,89 @@
+# In here, there should be a middleware to fetch the data and model switch name from ckn, which is a REST request, and then send to the iluvatar worker, which is a http request.import torch
+from PIL import Image
+from torchvision import transforms
+from torchvision import models
+import torch
+import io
+import time
+import base64
+import os
+
+cold = True
+
+def pre_process(image):
+    """
+    Pre-processes the image to allow the image to be fed into the PyTorch model.
+    :image: image.
+    :return: Pre-processed image tensor.
+    """
+    input_image = image.convert("RGB")  # Ensure the image is in RGB format
+    preprocess = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ])
+    input_tensor = preprocess(input_image)
+    input_batch = input_tensor.unsqueeze(0)
+    return input_batch
+
+
+def predict(input,model):
+    """
+    Predicting the class for a given pre-processed input
+    :param input:
+    :return: prediction class
+    """
+    with torch.no_grad():
+        output = model(input)
+    prob = torch.nn.functional.softmax(output[0], dim=0)
+    with open("imagenet_classes.txt", "r") as f:
+        labels = [s.strip() for s in f.readlines()]
+    # retrieve top probability for the input
+    high_prob, pred_label = torch.topk(prob, 1)
+
+    return str((labels[pred_label[0]])), high_prob[0].item()
+
+def main(args):
+    try:
+        global cold
+        model_name = args.get("model_name", 'resnet18')
+        image_b64 = args.get("image_data", None)
+        if image_b64 is not None:
+            was_cold = cold
+            cold = False
+            start = time.perf_counter()
+            image_bytes = base64.b64decode(image_b64)
+            image = Image.open(io.BytesIO(image_bytes))
+            preprocessed_input = pre_process(image)
+            preprocess_time = time.perf_counter()
+
+            model_path = f'model_{model_name}.pth'
+            # was_cold = not os.path.exists(model_path)
+            model = models.resnext50_32x4d()
+            model.load_state_dict(torch.load(model_path))
+            model.eval()
+            load_model_time = time.perf_counter()
+            prediction, probability = predict(preprocessed_input, model)
+            prediction_time = time.perf_counter()
+
+            return {
+                "body": {
+                    "Success! Using model": model_name,
+                    "Probability": probability,
+                    "Cold": was_cold,
+                    "Total Time (s)": prediction_time - start,
+                    "Pre-process Time (s)": preprocess_time - start,
+                    "Model Load Time (s)": load_model_time - preprocess_time,
+                    "Inference Time (s)": prediction_time - load_model_time
+                }
+            }
+        else:
+            return {"body": {"Failed": "No input image!"}}
+    except Exception as e:
+        import traceback
+        return {
+            "error": str(e),
+            "traceback": traceback.format_exc(),
+            "body": "Model crashed"
+        }, 500

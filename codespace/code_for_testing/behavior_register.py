@@ -4,14 +4,13 @@ import iluvatar_rpc_pb2_grpc as pb2_grpc
 import uuid
 import time
 
-channel = grpc.insecure_channel("127.0.0.1:8079")
+channel = grpc.insecure_channel("149.165.150.17:8079")
 worker = pb2_grpc.IluvatarWorkerStub(channel)
-model_name="shufflenet_v2_x0_5"
-# model_name="resnet152"
-# for cpu_core in [1,1,2,4,8]:
+# "mobilenet_v3_small","resnet18","resnet34","resnet50","resnet101","vit_b_16"
+model_name="mobilenet_v3_small"
 for cpu_core in [1]:
     start = time.perf_counter()
-    if model_name == "resnet152":
+    if model_name == "resnet101" or model_name == "vit_b_16":
         request = pb2.RegisterRequest(
             function_name=model_name,
             function_version=str(cpu_core),

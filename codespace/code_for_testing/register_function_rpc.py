@@ -3,7 +3,7 @@ import iluvatar_rpc_pb2 as pb2
 import iluvatar_rpc_pb2_grpc as pb2_grpc
 import uuid
 
-channel = grpc.insecure_channel("127.0.0.1:8079")
+channel = grpc.insecure_channel("149.165.150.17:8079")
 worker = pb2_grpc.IluvatarWorkerStub(channel)
 # print(pb2.RegisterRequest.DESCRIPTOR.fields_by_name.keys())
 # request = pb2.RegisterRequest(
@@ -52,11 +52,11 @@ worker = pb2_grpc.IluvatarWorkerStub(channel)
 
 
 
-model_list = ["shufflenet_v2_x0_5","mobilenet_v3_small","googlenet","resnext50_32x4d","densenet201","resnet152"]
+model_list = ["mobilenet_v3_small","resnet18","resnet34","resnet50","resnet101","vit_b_16"]
 # model_list = ["shufflenet_v2_x0_5"]
 
 for model_name in model_list:
-    if model_name == "resnet152":
+    if model_name == "resnet101" or model_name == "vit_b_16":
         request = pb2.RegisterRequest(
             function_name=model_name,
             function_version="1",

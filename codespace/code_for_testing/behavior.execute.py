@@ -144,14 +144,15 @@ async def send_request(stub, model_name, image_b64):
 
 async def QoED_test():
     # Config
-    model_name = "shufflenet_v2_x0_5"
+    # "mobilenet_v3_small","resnet18","resnet34","resnet50","resnet101","vit_b_16"
+    model_name="mobilenet_v3_small"
     num_requests = 128
     img_num = random.randint(0, 999)
     category_choice = random.choice(["cat", "dog"])
     image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/{}.{}.jpg".format(category_choice,img_num))
     image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
-    channel = grpc.aio.insecure_channel("127.0.0.1:8079")
+    channel = grpc.aio.insecure_channel("149.165.150.17:8079")
     stub = pb2_grpc.IluvatarWorkerStub(channel)
 
     tasks = []

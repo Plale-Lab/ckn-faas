@@ -44,6 +44,9 @@ def predict(input,model):
 
     return str((labels[pred_label[0]])), high_prob[0].item()
 
+def load_model(model_name):
+    return torch.hub.load('pytorch/vision:v0.10.0', model_name, pretrained=True)
+
 def main(args):
     try:
         global cold
@@ -55,18 +58,21 @@ def main(args):
             start = time.perf_counter()
             image_bytes = base64.b64decode(image_b64)
             image = Image.open(io.BytesIO(image_bytes))
+            # image.save('input_image.jpeg', format="JPEG")
             preprocessed_input = pre_process(image)
             preprocess_time = time.perf_counter()
 
             model_path = f'model_{model_name}.pth'
-            # was_cold = not os.path.exists(model_path)
-            model = models.mobilenet_v3_small()
-            model.load_state_dict(torch.load(model_path))
+            was_cold = not os.path.exists(model_path)
+            if was_cold:
+                model = load_model(model_name)
+                torch.save(model, model_path)
+            else:
+                model = torch.load(model_path, weights_only=False)
             model.eval()
             load_model_time = time.perf_counter()
             prediction, probability = predict(preprocessed_input, model)
             prediction_time = time.perf_counter()
-
             return {
                 "body": {
                     "Success! Using model": model_name,

@@ -58,7 +58,7 @@ def main(args):
             start = time.perf_counter()
             image_bytes = base64.b64decode(image_b64)
             image = Image.open(io.BytesIO(image_bytes))
-            image.save('input_image.jpeg', format="JPEG")
+            # image.save('input_image.jpeg', format="JPEG")
             preprocessed_input = pre_process(image)
             preprocess_time = time.perf_counter()
 
@@ -68,8 +68,8 @@ def main(args):
                 model = load_model(model_name)
                 torch.save(model, model_path)
             else:
-                model = torch.load(model_path)
-
+                model = torch.load(model_path, weights_only=False)
+            model.eval()
             load_model_time = time.perf_counter()
             prediction, probability = predict(preprocessed_input, model)
             prediction_time = time.perf_counter()

@@ -44,9 +44,9 @@ def observed_wait_times(file_path):
             wait_ms = 0
             rel_time = 0
         else:
-            wait_ms = (t_base-t_curr).total_seconds() * 1000
+            wait_ms = (t_base-t_curr).total_seconds()
         # wait_ms = (t1 - t0).total_seconds() * 1000
-            rel_time = int((t1 - base_time).total_seconds() * 1000)
+            rel_time = int((t1 - base_time).total_seconds())
         if wait_ms < 0 or q1 == 0:
             wait_ms = 0
         print(f"{q1},{rel_time},{round(wait_ms, 2)}")
