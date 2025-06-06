@@ -36,19 +36,21 @@ async def send_request(stub, model_name, image_b64):
         return {"model": model_name, "error": str(e)}
 
 
-model_list_total = ["shufflenet_v2_x0_5", "mobilenet_v3_small", "googlenet",
-                    "resnext50_32x4d", "densenet201", "resnet152"]
+model_list_total = ["mobilenet_v3_small","resnet18","resnet34","resnet50","resnet101","vit_b_16"]
 async def QoED_test():
     # Config
-    # model_name = "shufflenet_v2_x0_5"
-    model_list = random.sample(model_list_total, 2)
-    num_requests = 64
+    # model_list = random.sample(model_list_total, 3) # Randomly select 3 models from the total list
+    # model_list = ["resnet101"] # accuracy only
+    model_list = model_list_total # full ensemble
+    # model_list = ["mobilenet_v3_small"] # Resource only
+
+    num_requests = 256
     img_num = random.randint(0, 999)
     category_choice = random.choice(["cat", "dog"])
     image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/{}.{}.jpg".format(category_choice,img_num))
     image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
-    channel = grpc.aio.insecure_channel("127.0.0.1:8079")
+    channel = grpc.aio.insecure_channel("149.165.150.17:8079")
     stub = pb2_grpc.IluvatarWorkerStub(channel)
 
     tasks = []
@@ -56,18 +58,22 @@ async def QoED_test():
     for _ in range(num_requests):
         # Optional jitter between requests
         for model_name in model_list:
-            # await asyncio.sleep(0.5)
+            #generate random time to sleep between requests
+            jitter = random.uniform(0, 0.005) # 0.1 seconds max jitter
+            await asyncio.sleep(jitter)
             tasks.append(send_request(stub, model_name, image_b64))
 
     # Run all requests concurrently
     results = await asyncio.gather(*tasks)
-
+    # 2004598
     # Output results
+    acc_list = []
     for res in results:
         print("✅ Invocation response for", res.get("model"))
         if "error" in res:
             print("❌ Error:", res["error"])
         else:
+            acc_list.append(json.loads(res["result"])["body"]["Probability"])
             print("Success:", res["success"])
             result_json = json.loads(res["result"])
             print("Result:", result_json["body"]["Probability"])
@@ -77,7 +83,7 @@ async def QoED_test():
             print()
 
     end = time.perf_counter()
-    print("Total time for {} requests: {:.2f} ms".format(len(results), (end - start) * 1000))
+    print("Total time for {} requests: {:.2f} ms, average accuracy: {:.2f}".format(len(results), (end - start) * 1000, sum(acc_list) / len(acc_list)))
 
 if __name__ == "__main__":
     asyncio.run(QoED_test())
