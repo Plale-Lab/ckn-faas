@@ -42,3 +42,5 @@ To execute, give a list D (line 15) that has the length of number of incoming re
 
 
 The scripts start with "quote_est_time", quotes the function estimated time in iluvatar via RPC. To use them, make sure a function with the same name is used.
+
+### Don’t forget to kill the Iluvatar process after use, especially if it won’t be used for an extended period.
