@@ -17,7 +17,8 @@ channel = grpc.insecure_channel("149.165.150.17:8079")
 worker = pb2_grpc.IluvatarWorkerStub(channel)
 
 # # Get your username (same as `whoami`)
-username = os.getlogin()  # or os.environ["USER"]
+# username = os.getlogin()  # or 
+os.environ["USER"]
 
 # Create the InvokeRequest
 # request = pb2.InvokeRequest(
@@ -37,10 +38,10 @@ username = os.getlogin()  # or os.environ["USER"]
 #         )
 
 ## Sequentially invoke the function
-image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/cat.12.jpg")
+image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/ckn_data/images/d2iedgeai3/cat.12.jpg")
 image_b64 = base64.b64encode(image_bytes).decode("utf-8")
-model_list_total = model_list = ["mobilenet_v3_small","resnet18","resnet34","resnet50","resnet101","vit_b_16"]
-# model_list_total = ["shufflenet_v2_x0_5"]
+model_list_total = ["mobilenet_v3_small","resnet18","resnet34","resnet50","resnet101","vit_b_16"]
+# model_list_total = ["mobilenet_v3_small"]
 for model_name in model_list_total:
     request = pb2.InvokeRequest(
             function_name=model_name,
