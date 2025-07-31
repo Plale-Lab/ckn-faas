@@ -93,10 +93,10 @@ async def QoED_test():
     # Load image once
     img_num = random.randint(0, 999)
     category_choice = random.choice(["cat", "dog"])
-    image_path = f"/home/exouser/ckn-faas/codespace/ckn/jetsons/device/data/images/d2iedgeai3/{category_choice}.{img_num}.jpg"
+    image_path = f"/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/ckn_data/images/d2iedgeai3/{category_choice}.{img_num}.jpg"
     image_b64 = base64.b64encode(read_image_as_bytes(image_path)).decode("utf-8")
 
-    async_channel = grpc.aio.insecure_channel("149.165.150.17:8079")
+    async_channel = grpc.aio.insecure_channel("149.165.155.226:8079")
     stub = pb2_grpc.IluvatarWorkerStub(async_channel)
 
     A = []

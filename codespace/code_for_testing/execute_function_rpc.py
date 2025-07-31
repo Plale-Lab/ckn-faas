@@ -13,7 +13,7 @@ def read_image_as_bytes(path):
         return f.read()
 
 # Connect to the worker
-channel = grpc.insecure_channel("149.165.150.17:8079")
+channel = grpc.insecure_channel("149.165.152.13:8079")
 worker = pb2_grpc.IluvatarWorkerStub(channel)
 
 # # Get your username (same as `whoami`)
@@ -38,7 +38,7 @@ os.environ["USER"]
 #         )
 
 ## Sequentially invoke the function
-image_bytes = read_image_as_bytes("/home/exouser/ckn-faas/ckn_data/images/d2iedgeai3/cat.12.jpg")
+image_bytes = read_image_as_bytes("/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/ckn_data/images/d2iedgeai3/cat.11.jpg")
 image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 model_list_total = ["mobilenet_v3_small","resnet18","resnet34","resnet50","resnet101","vit_b_16"]
 # model_list_total = ["mobilenet_v3_small"]
@@ -55,7 +55,7 @@ for model_name in model_list_total:
     # Print the result
     print("✅ Invocation response:")
     print("Success:", response.success)
-    print("Result:", response.json_result)
+    print("Result :", response.json_result) ##
     print("Duration (μs):", response.duration_us)
     print("Compute:", response.compute)
     print("Container state:", pb2.ContainerState.Name(response.container_state))
