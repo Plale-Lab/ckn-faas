@@ -81,6 +81,7 @@ async def send_request(stub, model_name, image_b64):
             "accuracy": float(result_json["body"]["Probability"]),
             "latency": response.duration_us / 1e6,
             "success": response.success,
+            "status": response.success,
             "container_state": pb2.ContainerState.Name(response.container_state),
         }
     except Exception as e:
@@ -188,7 +189,7 @@ async def QoED_test(transaction_id: str, deadline: int) -> dict:
     image_b64 = base64.b64encode(read_image_as_bytes(image_path)).decode("utf-8")
 
     # Step 1: gRPC connection
-    async_channel = grpc.aio.insecure_channel("149.165.152.13:8079")
+    async_channel = grpc.aio.insecure_channel("149.165.151.41:8079")
     stub = pb2_grpc.IluvatarWorkerStub(async_channel)
 
     # Step 2: Get wait time estimates
@@ -235,15 +236,16 @@ async def QoED_test(transaction_id: str, deadline: int) -> dict:
     print(f"[Request {transaction_id}] Selected Models: {M_D}")
     if not M_D:
         print(f"[Request {transaction_id}] No valid models under deadline.[{sorted_models}{cost}]")
-        return {"model": -1, "success": False, "latency": -1, "accuracy": 0.0, "container_state": "SKIPPED", "wait_times": total_estimates}
+        return {"model": -1, "success": False, "latency": -1, "accuracy": 0.0, "container_state": "SKIPPED", "status":"Skipped", "wait_times": total_estimates}
 
     # Step 4: Send requests
+    send_req_start_time_sec = time.perf_counter()
     tasks = [send_request(stub, m, image_b64) for m in M_D]
     results = await asyncio.gather(*tasks)
     results = [res for res in results if res.get("success", False)]
     if not results:
         print(f"[Request {transaction_id}] No successful model responses.")
-        return {"model": -1, "success": False, "latency": -1, "accuracy": 0.0, "container_state": "FAILED", "wait_times": total_estimates}
+        return {"model": -1, "success": False, "latency": -1, "accuracy": 0.0, "container_state": "FAILED", "status":"False", "wait_times": total_estimates}
 
     # Step 5: Choose best result
     best = max(results, key=lambda x: x["accuracy"])
@@ -273,7 +275,8 @@ async def QoED_test(transaction_id: str, deadline: int) -> dict:
     "container_state": best["container_state"],
     "selected_models": M_D,
     "cost_function_execution_time_ms":(end_time - start_time) * 1000,
-    "wait_times": total_estimates,
+    "status": best["status"],
+    "wait_times": total_estimates
 }
 
 
