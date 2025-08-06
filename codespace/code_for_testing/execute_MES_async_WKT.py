@@ -179,30 +179,6 @@ async def get_estimated_wait_async(stub, model_name):
 #     end_time = time.perf_counter()
 #     print(f"Total time for {len(R)} requests: {(end_time - start_time) * 1000:.2f} ms")
 
-
-def get_estimated_wait(stub, model_name):
-    fqdn = f"{model_name}-1"
-    request = pb2.EstInvokeRequest(transaction_id=str(uuid.uuid4()), fqdns=[fqdn])
-    try:
-        response = stub.est_invoke_time(request)
-        return response.est_time[0] if response.est_time else float('inf')
-    except grpc.RpcError as e:
-        print(f"[{datetime.now()}] Failed to estimate for {model_name}: {e.details()}")
-        return float('inf')
-
-def get_wait():
-    channel = grpc.insecure_channel("149.165.151.41:8079")
-    stub = pb2_grpc.IluvatarWorkerStub(channel)
-
-    wait_results = {}
-    for model in M_total:
-        wait_time = get_estimated_wait(stub, model)
-        wait_results[model] = wait_time
-
-    print(json.dumps(wait_results, indent=2))
-    return wait_results
-
-
 async def QoED_test(transaction_id: str, deadline: int) -> dict:
     start_time = time.perf_counter()
 
@@ -217,9 +193,8 @@ async def QoED_test(transaction_id: str, deadline: int) -> dict:
     stub = pb2_grpc.IluvatarWorkerStub(async_channel)
 
     # Step 2: Get wait time estimates
-    # wait_tasks = {m: asyncio.create_task(get_estimated_wait_async(stub, m)) for m in M_total}
-    # wait_results = {m: await t for m, t in wait_tasks.items()}
-    wait_results = get_wait()
+    wait_tasks = {m: asyncio.create_task(get_estimated_wait_async(stub, m)) for m in M_total}
+    wait_results = {m: await t for m, t in wait_tasks.items()}
 
     # Step 3: Select models
     M_D = []
