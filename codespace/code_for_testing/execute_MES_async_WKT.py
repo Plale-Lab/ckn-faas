@@ -240,10 +240,8 @@ async def QoED_test(transaction_id: str, deadline: int) -> dict:
 
     # Step 4: Send requests
     send_req_start_time_sec = time.perf_counter()
-    results = []
-    for m in M_D:
-        res = await send_request(stub, m, image_b64)
-        results.append(res)
+    tasks = [send_request(stub, m, image_b64) for m in M_D]
+    results = await asyncio.gather(*tasks)
     results = [res for res in results if res.get("success", False)]
     if not results:
         print(f"[Request {transaction_id}] No successful model responses.")
