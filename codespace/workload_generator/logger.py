@@ -46,7 +46,7 @@ console = Console()
 
 # Add per-model wait columns to the header
 LOG_HEADER = [
-    "ID", "Deadline", "IAR", "RespTime","RunTime", "Model", "Accuracy", "Latency", "State", "Success", "selected_models", "cost_function_execution_time_ms",
+    "ID", "Deadline", "IAR", "RespTime","RunTime", "Model", "Accuracy", "Latency", "State", "Success", "selected_models", "cost_function_execution_time_ms", "status"
     "mobilenet_v3_small_wait", "resnet18_wait", "resnet34_wait",
     "resnet50_wait", "resnet101_wait", "vit_b_16_wait"
 ]
@@ -54,7 +54,7 @@ LOG_HEADER = [
 def log_result(mode, req_id, deadline, iar, response_time,current_time_sec, response):
     os.makedirs("data", exist_ok=True)
     if mode == "vary_deadline":
-        log_path = "/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/deadline_results_I5_D240.csv"
+        log_path = "/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/deadline_results_I1_D60.csv"
     else:
         log_path = "/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/iar_results_3.csv"
 
@@ -74,6 +74,7 @@ def log_result(mode, req_id, deadline, iar, response_time,current_time_sec, resp
             response.get("success"),
             response.get("selected_models", []),
             response.get("cost_function_execution_time_ms",-1),
+            response.get("status"),
             waits.get("mobilenet_v3_small", -1),
             waits.get("resnet18", -1),
             waits.get("resnet34", -1),
@@ -97,6 +98,7 @@ def log_result(mode, req_id, deadline, iar, response_time,current_time_sec, resp
         str(response.get("success")),
         str(response.get("selected_models", [])),
         str(response.get("cost_function_execution_time_ms")),
+        str(response.get("status")),
         f"{waits.get('mobilenet_v3_small', -1):.2f}",
         f"{waits.get('resnet18', -1):.2f}",
         f"{waits.get('resnet34', -1):.2f}",

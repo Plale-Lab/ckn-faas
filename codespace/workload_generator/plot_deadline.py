@@ -7,7 +7,7 @@ import numpy as np
 
 
 column_names = [
-    "ID", "Deadline", "IAR", "RespTime", "RunTime", "Model", "Accuracy", "Latency", "State", "Success", "selected_models", "cost_function_execution_time_ms",
+    "ID", "Deadline", "IAR", "RespTime", "RunTime", "Model", "Accuracy", "Latency", "State", "Success", "selected_models", "cost_function_execution_time_ms", "status",
     "mobilenet_v3_small_wait", "resnet18_wait", "resnet34_wait",
     "resnet50_wait", "resnet101_wait", "vit_b_16_wait","run_time"
 ]
