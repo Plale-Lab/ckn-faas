@@ -13,7 +13,7 @@ def read_image_as_bytes(path):
         return f.read()
 
 # Connect to the worker
-channel = grpc.insecure_channel("149.165.152.13:8079")
+channel = grpc.insecure_channel("149.165.168.72:8079")
 worker = pb2_grpc.IluvatarWorkerStub(channel)
 
 # # Get your username (same as `whoami`)

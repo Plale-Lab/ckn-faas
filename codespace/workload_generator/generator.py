@@ -22,7 +22,7 @@ async def generate_workload(profile_name, duration_sec, mode="vary_deadline"):
     # iar = iar_profiles["short"] / 1000.0
 
     default_deadline_ms = 150
-    default_air_ms = 1000
+    default_air_ms = 50
 
     req_index = 0
     tasks = []

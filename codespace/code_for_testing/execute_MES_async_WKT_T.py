@@ -183,7 +183,7 @@ async def QoED_test(transaction_id: str, deadline: int) -> dict:
     image_b64 = base64.b64encode(read_image_as_bytes(image_path)).decode("utf-8")
 
     # Step 1: Async gRPC connection
-    async_channel = grpc.aio.insecure_channel("149.165.151.41:8079")
+    async_channel = grpc.aio.insecure_channel("149.165.168.72:8079")
     stub = pb2_grpc.IluvatarWorkerStub(async_channel)
 
     # Step 2: Get wait time estimates

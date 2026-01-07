@@ -13,7 +13,7 @@ column_names = [
 ]
 
 # Load the CSV
-df = pd.read_csv("/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/deadline_results_I1_D30.csv", header=None, names=column_names)
+df = pd.read_csv("/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/deadline_results_M3_I5_D1.csv", header=None, names=column_names)
 
 # Convert string booleans to actual booleans if needed
 df["Success"] = df["Success"].astype(bool)
@@ -192,7 +192,7 @@ wait_cols = [
 ]
 
 # Filter skipped requests
-skipped_df = df_sorted[df_sorted["State"] == "SKIPPED"]
+skipped_df = df_sorted[df_sorted["status"] == "Skipped"]
 
 # Get fixed deadline (assumed constant per experiment)
 fixed_deadline_ms = df_sorted["Deadline"].iloc[0]
@@ -229,8 +229,8 @@ plt.axhline(
 )
 
 # Final plot formatting
-plt.title(f"Estimated Wait Time per Model vs Runtime with Dropped Requests (Deadline: {fixed_deadline:.0f} ms, IAR: {fixed_iar:.0f} ms)")
-plt.xlabel("Runtime (s)")
+plt.title(f"Model-wise Estimated Wait Time vs Run Time (Deadline: {fixed_deadline:.0f} ms, IAR: {fixed_iar:.0f} ms)")
+plt.xlabel("Run Time (s)")
 plt.ylabel("Estimated Wait Time (s)")
 plt.grid(True)
 plt.legend(title="Model", bbox_to_anchor=(1.05, 1), loc="upper left")
@@ -286,6 +286,71 @@ for (deadline, iar), group in grouped:
     plt.legend(loc='best')
     plt.tight_layout()
 
+    plt.show()
+
+    # new
+import ast
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# Safe parse of model list
+def safe_model_list(x):
+    try:
+        if pd.isnull(x) or x in (-1, "nan", "", "[]"):
+            return []
+        return ast.literal_eval(str(x))
+    except Exception:
+        return []
+
+# Parse selected models as list
+df["selected_models_list"] = df["selected_models"].apply(safe_model_list)
+
+# Map each model to a fixed color
+model_colors = {
+    "mobilenet_v3_small": "green",
+    "resnet18": "blue",
+    "resnet34": "orange",
+    "resnet50": "red",
+    "resnet101": "purple",
+    "vit_b_16": "brown",
+}
+
+# Group by Deadline and IAR
+grouped = df.groupby(["Deadline", "IAR"])
+
+for (deadline, iar), group in grouped:
+    group_sorted = group.sort_values("RunTime")
+
+    plt.figure(figsize=(12, 6))
+
+    for idx, row in group_sorted.iterrows():
+        models = row["selected_models_list"]
+        runtime = row["RunTime"]
+
+        if not models:
+            # Mark skipped cases
+            plt.scatter(runtime, 0, marker="x", color="gray", label="Skipped" if "Skipped" not in plt.gca().get_legend_handles_labels()[1] else "")
+        else:
+            for m in models:
+                plt.scatter(
+                    runtime,
+                    len(models),  # y-axis is size of selected set
+                    color=model_colors.get(m, "black"),
+                    marker="o",
+                    s=80,
+                    label=m if m not in plt.gca().get_legend_handles_labels()[1] else ""
+                )
+
+    # Titles and labels
+    plt.title(f"Selected Models vs Run Time\nDeadline: {deadline} ms, IAR: {iar} ms", fontsize=14)
+    plt.xlabel("Run Time (s)", fontsize=12)
+    plt.ylabel("Model Set Size", fontsize=12)
+
+    # Grid and legend
+    plt.grid(True, linestyle="--", linewidth=0.5)
+    plt.legend(loc="best", fontsize=10)
+    plt.tight_layout()
     plt.show()
 
 

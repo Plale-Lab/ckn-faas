@@ -35,21 +35,40 @@ def observed_wait_times(file_path):
             t_base = t0
             break
     t_curr = queue_data[0][0]
+
+    # Print header
+    # print(f"{'Queue Length':<15}{'Relative Time (s)':<20}{'Estimated Wait Time (s)'}")
+    # print("-" * 55)
+    #
+    # for i in range(1, len(queue_data)):
+    #     t0, q0 = queue_data[i - 1]
+    #     t1, q1 = queue_data[i]
+    #     if q1 < q0:
+    #         t_curr = t1
+    #     if q1 == 0:
+    #         wait_ms = 0
+    #         rel_time = 0
+    #     else:
+    #         wait_ms = (t_base - t_curr).total_seconds()
+    #         rel_time = int((t1 - base_time).total_seconds())
+    #     if wait_ms < 0 or q1 == 0:
+    #         wait_ms = 0
+    #
+    #     print(f"{q1:<15}{rel_time:<20}{round(wait_ms, 2)}")
+
+    # Print header
+    print(f"{'Queue Length':<15}{'Relative Time (s)':<20}{'Timestamp'}")
+    print("-" * 60)
+
     for i in range(1, len(queue_data)):
         t0, q0 = queue_data[i - 1]
         t1, q1 = queue_data[i]
-        if q1 < q0:
-            t_curr = t1
-        if q1 == 0:
-            wait_ms = 0
-            rel_time = 0
-        else:
-            wait_ms = (t_base-t_curr).total_seconds()
-        # wait_ms = (t1 - t0).total_seconds() * 1000
-            rel_time = int((t1 - base_time).total_seconds())
-        if wait_ms < 0 or q1 == 0:
-            wait_ms = 0
-        print(f"{q1},{rel_time},{round(wait_ms, 2)}")
+
+        # Compute relative time (if you still want to keep it)
+        rel_time = int((t1 - base_time).total_seconds())
+
+        # Print queue length, relative time, and actual timestamp
+        print(f"{q1:<15}{rel_time:<20}{t1.strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}")
 
 if __name__ == "__main__":
-    observed_wait_times("/tmp/iluvatar/logs/worker.log")
+    observed_wait_times("worker.log")

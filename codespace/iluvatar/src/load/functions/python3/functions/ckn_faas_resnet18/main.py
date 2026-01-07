@@ -41,7 +41,7 @@ def predict(input,model):
         labels = [s.strip() for s in f.readlines()]
     # retrieve top probability for the input
     high_prob, pred_label = torch.topk(prob, 1)
-
+    print(f"Predicted class: {labels[pred_label[0]]}, Probability: {high_prob[0].item():.4f}")
     return str((labels[pred_label[0]])), high_prob[0].item()
 
 def load_model(model_name):
@@ -76,6 +76,7 @@ def main(args):
             return {
                 "body": {
                     "Success! Using model": model_name,
+                    "Prediction Class": prediction,
                     "Probability": probability,
                     "Cold": was_cold,
                     "Total Time (s)": prediction_time - start,
