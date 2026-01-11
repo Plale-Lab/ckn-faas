@@ -43,6 +43,7 @@ This design enables **adaptive, deadline-aware inference** across **heterogeneou
 
 ##  Cost Function
 The selection of a model set is guided by the following cost function:
+
 $$
 C_r = \frac{T_e}{D} + \alpha \cdot \frac{\text{MaxMS}[size]}{\sum \text{bytes}_{MS}}
 $$
