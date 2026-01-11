@@ -7,8 +7,8 @@ import json
 import sys
 from datetime import datetime
 
-import code_for_testing.iluvatar_rpc_pb2 as pb2
-import code_for_testing.iluvatar_rpc_pb2_grpc as pb2_grpc
+import ckn_controller.iluvatar_rpc_pb2 as pb2
+import ckn_controller.iluvatar_rpc_pb2_grpc as pb2_grpc
 
 
 M_total = ["mobilenet_v3_small", "resnet18", "resnet34", "resnet50", "resnet101", "vit_b_16"]
@@ -32,7 +32,7 @@ def main():
         wait_time = get_estimated_wait(stub, model)
         wait_results[model] = wait_time
 
-    print(json.dumps(wait_results, indent=2))
+    # print(json.dumps(wait_results, indent=2))
 
     return wait_results
 

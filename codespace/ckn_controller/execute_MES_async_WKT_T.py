@@ -1,6 +1,6 @@
 import grpc
-import code_for_testing.iluvatar_rpc_pb2 as pb2
-import code_for_testing.iluvatar_rpc_pb2_grpc as pb2_grpc
+import ckn_controller.iluvatar_rpc_pb2 as pb2
+import ckn_controller.iluvatar_rpc_pb2_grpc as pb2_grpc
 import json
 import uuid
 import base64

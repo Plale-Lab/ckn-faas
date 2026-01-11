@@ -1,8 +1,8 @@
 import grpc
 import iluvatar_rpc_pb2 as pb2
 import iluvatar_rpc_pb2_grpc as pb2_grpc
-import code_for_testing.iluvatar_rpc_pb2 as pb2
-import code_for_testing.iluvatar_rpc_pb2_grpc as pb2_grpc
+import ckn_controller.iluvatar_rpc_pb2 as pb2
+import ckn_controller.iluvatar_rpc_pb2_grpc as pb2_grpc
 import json
 import uuid
 import base64
@@ -10,9 +10,9 @@ import time
 import random
 import asyncio
 from datetime import datetime
-from code_for_testing.ckn_config  import SERVER_ADDRESS, M_TOTAL, POLICY, K, C, ALPHA, ETA,MODEL_PROFILES,COLD_PENALTY, OMEGA, MAX_MODEL_SIZE
+from ckn_controller.ckn_config  import SERVER_ADDRESS, M_TOTAL, POLICY, K, C, ALPHA, ETA,MODEL_PROFILES,COLD_PENALTY, OMEGA, MAX_MODEL_SIZE
 import wait_time_iluvatar
-from code_for_testing.output_combiner import combine_outputs
+from ckn_controller.output_combiner import combine_outputs
 
 # Configuration
 # M_total = ["mobilenet_v3_small","resnet18","resnet34","resnet50","resnet101","vit_b_16"]

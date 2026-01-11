@@ -1,7 +1,7 @@
 import os, csv
 from rich.table import Table
 from rich.console import Console
-from code_for_testing.ckn_config import M_TOTAL
+from ckn_controller.ckn_config import M_TOTAL
 
 
 console = Console()

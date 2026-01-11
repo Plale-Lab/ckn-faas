@@ -1,6 +1,6 @@
 from collections import Counter, defaultdict
 
-from code_for_testing.label_utils import name_from_wnid
+from ckn_controller.label_utils import name_from_wnid
 
 
 def combine_outputs(results, policy="most_confident", historical_acc=None, model_weights=None, ground_truth=None, gamma=0.9, rho=1, update_weights=True, label_matcher=None):
