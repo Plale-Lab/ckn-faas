@@ -138,7 +138,7 @@ Navigate to the workload generator entry point:
 ```text
 codespace/workload_generator/main
 ```
-Run the workload generator:
+Run the workload generator: 
 
 ```bash
 python main.py
