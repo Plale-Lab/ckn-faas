@@ -88,7 +88,10 @@ cd ckn-faas
 ## How to Run 
 
 ### 1 Start Ilúvatar and get the server IP
-Run **Ilúvatar** (your serverless inference platform) and note the server IP address or hostname where it is running.
+Run **Ilúvatar** (serverless inference platform) and note the server IP address or hostname where it is running.
+
+- Ilúvatar repository:  
+https://github.com/COS-IN/iluvatar-faas
 
 ---
 
@@ -105,7 +108,7 @@ Update the server address in the configuration file:
 ```python
 SERVER_ADDRESS = "xxx.xxx.xxx.xx:8079"
 ```
-Replace xxx.xxx.xxx.xx with your Ilúvatar server IP.
+Replace xxx.xxx.xxx.xx with Ilúvatar server IP.
 
 
 ### 3 Run the CKN service
@@ -133,10 +136,10 @@ default_air_ms = 100
 
 
 ### 5 Run the workload generator
-Navigate to the workload generator entry point:
+Navigate to the workload generator directory:
 
 ```text
-codespace/workload_generator/main
+codespace/workload_generator
 ```
 Run the workload generator: 
 

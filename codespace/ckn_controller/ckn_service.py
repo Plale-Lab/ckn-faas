@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
 
-from ckn_controller.ckn_main import main_ensemble_invoke
+from codespace.ckn_controller.ckn_main import main_ensemble_invoke
 
 app = FastAPI()
 
