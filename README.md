@@ -110,6 +110,12 @@ SERVER_ADDRESS = "xxx.xxx.xxx.xx:8079"
 ```
 Replace xxx.xxx.xxx.xx with Ilúvatar server IP.
 
+### Register functions
+Register the built functions with Ilúvatar using the following command:
+
+```bash
+python3 register_function_rpc.py
+
 
 ### 3 Run the CKN service
 Start the CKN service from the project root:
