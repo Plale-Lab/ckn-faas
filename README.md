@@ -115,7 +115,7 @@ Register the built functions with Ilúvatar using the following command:
 
 ```bash
 python3 register_function_rpc.py
-
+```
 
 ### 3 Run the CKN service
 Start the CKN service from the project root:
