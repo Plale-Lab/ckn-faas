@@ -1,0 +1,6 @@
+workload_level,trace_derived_definition_rps,mean_observed_rate_rps,median_observed_rate_rps,p95_observed_rate_rps,maximum_observed_rate_rps,observed_bin_count
+Idle,rate = 0,0.0,0.0,0.0,0.0,105149
+Low,0 < rate <= 1.20,0.6977516059957173,0.6,1.2,1.2,13076
+Medium,1.20 < rate <= 2.40,1.6978432185815016,1.6,2.4,2.4,4822
+High,2.40 < rate <= 13.20,9.410535876475931,10.6,13.0,13.2,3303
+Spike,rate > 13.20,16.461363636363636,14.8,23.8,30.2,1056

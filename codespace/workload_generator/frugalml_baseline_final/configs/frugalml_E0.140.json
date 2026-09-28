@@ -1,0 +1,11 @@
+{
+  "error_constraint": 0.14,
+  "target_accuracy": 0.86,
+  "base_model": "resnet34",
+  "default_addon_model": "convnext_tiny",
+  "default_threshold": 0.4,
+  "class_policies": {},
+  "metadata": {
+    "policy_type": "starter_global_threshold"
+  }
+}

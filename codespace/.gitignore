@@ -1,0 +1,4 @@
+workload_generator/azure_load/azure-functions/joined_d01_trace.pckl
+workload_generator/azure_load/AzureFunctionsInvocationTraceForTwoWeeksJan2021.txt
+workload_generator/azure_load/azure-functions/invocations_per_function_md.anon.d01.csv
+workload_generator/azure_load/azure-functions/joined_d01_trace.csv

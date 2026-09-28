@@ -1,0 +1,11 @@
+\begin{tabular}{llrrr}
+\toprule
+Workload level & Trace-derived definition (req/s) & Mean rate (req/s) & P95 rate (req/s) & Maximum rate (req/s) \\
+\midrule
+Idle & rate = 0 & 0.00 & 0.00 & 0.00 \\
+Low & 0 < rate <= 1.20 & 0.70 & 1.20 & 1.20 \\
+Medium & 1.20 < rate <= 2.40 & 1.70 & 2.40 & 2.40 \\
+High & 2.40 < rate <= 13.20 & 9.41 & 13.00 & 13.20 \\
+Spike & rate > 13.20 & 16.46 & 23.80 & 30.20 \\
+\bottomrule
+\end{tabular}

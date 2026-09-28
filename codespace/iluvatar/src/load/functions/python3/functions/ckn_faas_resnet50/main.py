@@ -106,7 +106,7 @@ import io
 import time
 import base64
 
-torch.set_num_threads(3)
+torch.set_num_threads(2)
 torch.set_num_interop_threads(1)
 
 # Keep loaded models in memory

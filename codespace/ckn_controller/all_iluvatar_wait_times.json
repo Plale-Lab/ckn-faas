@@ -1,0 +1,317 @@
+{
+  "collected_at": "2026-08-03T22:25:02.345764",
+  "node_wait_results": {
+    "edge_1": {
+      "mobilenet_v3_small": 0.013245062497231341,
+      "mobilenet_v2": 0.03477377285808629,
+      "shufflenet_v2_x1_0": 0.022355535234544453,
+      "resnet18": 0.03783069587248842,
+      "resnet34": 0.07478913591878465
+    },
+    "edge_2": {
+      "mobilenet_v3_small": 0.012834115287023638,
+      "mobilenet_v2": 0.029768374328469713,
+      "shufflenet_v2_x1_0": 0.01984511576448028,
+      "resnet18": 0.039748792977493744,
+      "resnet34": 0.07149973020053518
+    },
+    "cloud_1": {
+      "resnet50": 0.13525506716266805,
+      "resnet101": 0.1637762812665332,
+      "efficientnet_b3": 0.08472951921669825,
+      "convnext_tiny": 0.08469567590181656,
+      "vit_b_16": 0.3549478560244706
+    },
+    "cloud_2": {
+      "resnet50": 0.11610361709042723,
+      "resnet101": 0.1888786094447137,
+      "efficientnet_b3": 0.05758818218134347,
+      "convnext_tiny": 0.12327739658878294,
+      "vit_b_16": 0.27535945197805317
+    }
+  },
+  "best_model_waits": {
+    "mobilenet_v3_small": 0.012834115287023638,
+    "mobilenet_v2": 0.029768374328469713,
+    "shufflenet_v2_x1_0": 0.01984511576448028,
+    "resnet18": 0.03783069587248842,
+    "resnet34": 0.07149973020053518,
+    "resnet50": 0.11610361709042723,
+    "resnet101": 0.1637762812665332,
+    "efficientnet_b3": 0.05758818218134347,
+    "convnext_tiny": 0.08469567590181656,
+    "vit_b_16": 0.27535945197805317
+  },
+  "best_model_routes": {
+    "mobilenet_v3_small": {
+      "model": "mobilenet_v3_small",
+      "node_id": "edge_2",
+      "node_type": "edge",
+      "server_address": "149.165.175.242:8081",
+      "estimated_wait_s": 0.012834115287023638,
+      "estimated_wait_ms": 12.834115287023637,
+      "available": true,
+      "candidates": [
+        {
+          "model": "mobilenet_v3_small",
+          "node_id": "edge_1",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8079",
+          "estimated_wait_s": 0.013245062497231341,
+          "estimated_wait_ms": 13.245062497231341
+        },
+        {
+          "model": "mobilenet_v3_small",
+          "node_id": "edge_2",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8081",
+          "estimated_wait_s": 0.012834115287023638,
+          "estimated_wait_ms": 12.834115287023637
+        }
+      ]
+    },
+    "mobilenet_v2": {
+      "model": "mobilenet_v2",
+      "node_id": "edge_2",
+      "node_type": "edge",
+      "server_address": "149.165.175.242:8081",
+      "estimated_wait_s": 0.029768374328469713,
+      "estimated_wait_ms": 29.768374328469715,
+      "available": true,
+      "candidates": [
+        {
+          "model": "mobilenet_v2",
+          "node_id": "edge_1",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8079",
+          "estimated_wait_s": 0.03477377285808629,
+          "estimated_wait_ms": 34.77377285808629
+        },
+        {
+          "model": "mobilenet_v2",
+          "node_id": "edge_2",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8081",
+          "estimated_wait_s": 0.029768374328469713,
+          "estimated_wait_ms": 29.768374328469715
+        }
+      ]
+    },
+    "shufflenet_v2_x1_0": {
+      "model": "shufflenet_v2_x1_0",
+      "node_id": "edge_2",
+      "node_type": "edge",
+      "server_address": "149.165.175.242:8081",
+      "estimated_wait_s": 0.01984511576448028,
+      "estimated_wait_ms": 19.84511576448028,
+      "available": true,
+      "candidates": [
+        {
+          "model": "shufflenet_v2_x1_0",
+          "node_id": "edge_1",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8079",
+          "estimated_wait_s": 0.022355535234544453,
+          "estimated_wait_ms": 22.35553523454445
+        },
+        {
+          "model": "shufflenet_v2_x1_0",
+          "node_id": "edge_2",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8081",
+          "estimated_wait_s": 0.01984511576448028,
+          "estimated_wait_ms": 19.84511576448028
+        }
+      ]
+    },
+    "resnet18": {
+      "model": "resnet18",
+      "node_id": "edge_1",
+      "node_type": "edge",
+      "server_address": "149.165.175.242:8079",
+      "estimated_wait_s": 0.03783069587248842,
+      "estimated_wait_ms": 37.83069587248842,
+      "available": true,
+      "candidates": [
+        {
+          "model": "resnet18",
+          "node_id": "edge_1",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8079",
+          "estimated_wait_s": 0.03783069587248842,
+          "estimated_wait_ms": 37.83069587248842
+        },
+        {
+          "model": "resnet18",
+          "node_id": "edge_2",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8081",
+          "estimated_wait_s": 0.039748792977493744,
+          "estimated_wait_ms": 39.74879297749374
+        }
+      ]
+    },
+    "resnet34": {
+      "model": "resnet34",
+      "node_id": "edge_2",
+      "node_type": "edge",
+      "server_address": "149.165.175.242:8081",
+      "estimated_wait_s": 0.07149973020053518,
+      "estimated_wait_ms": 71.49973020053518,
+      "available": true,
+      "candidates": [
+        {
+          "model": "resnet34",
+          "node_id": "edge_1",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8079",
+          "estimated_wait_s": 0.07478913591878465,
+          "estimated_wait_ms": 74.78913591878465
+        },
+        {
+          "model": "resnet34",
+          "node_id": "edge_2",
+          "node_type": "edge",
+          "server_address": "149.165.175.242:8081",
+          "estimated_wait_s": 0.07149973020053518,
+          "estimated_wait_ms": 71.49973020053518
+        }
+      ]
+    },
+    "resnet50": {
+      "model": "resnet50",
+      "node_id": "cloud_2",
+      "node_type": "cloud",
+      "server_address": "149.165.174.241:8071",
+      "estimated_wait_s": 0.11610361709042723,
+      "estimated_wait_ms": 116.10361709042722,
+      "available": true,
+      "candidates": [
+        {
+          "model": "resnet50",
+          "node_id": "cloud_1",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8070",
+          "estimated_wait_s": 0.13525506716266805,
+          "estimated_wait_ms": 135.25506716266804
+        },
+        {
+          "model": "resnet50",
+          "node_id": "cloud_2",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8071",
+          "estimated_wait_s": 0.11610361709042723,
+          "estimated_wait_ms": 116.10361709042722
+        }
+      ]
+    },
+    "resnet101": {
+      "model": "resnet101",
+      "node_id": "cloud_1",
+      "node_type": "cloud",
+      "server_address": "149.165.174.241:8070",
+      "estimated_wait_s": 0.1637762812665332,
+      "estimated_wait_ms": 163.7762812665332,
+      "available": true,
+      "candidates": [
+        {
+          "model": "resnet101",
+          "node_id": "cloud_1",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8070",
+          "estimated_wait_s": 0.1637762812665332,
+          "estimated_wait_ms": 163.7762812665332
+        },
+        {
+          "model": "resnet101",
+          "node_id": "cloud_2",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8071",
+          "estimated_wait_s": 0.1888786094447137,
+          "estimated_wait_ms": 188.8786094447137
+        }
+      ]
+    },
+    "efficientnet_b3": {
+      "model": "efficientnet_b3",
+      "node_id": "cloud_2",
+      "node_type": "cloud",
+      "server_address": "149.165.174.241:8071",
+      "estimated_wait_s": 0.05758818218134347,
+      "estimated_wait_ms": 57.58818218134347,
+      "available": true,
+      "candidates": [
+        {
+          "model": "efficientnet_b3",
+          "node_id": "cloud_1",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8070",
+          "estimated_wait_s": 0.08472951921669825,
+          "estimated_wait_ms": 84.72951921669825
+        },
+        {
+          "model": "efficientnet_b3",
+          "node_id": "cloud_2",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8071",
+          "estimated_wait_s": 0.05758818218134347,
+          "estimated_wait_ms": 57.58818218134347
+        }
+      ]
+    },
+    "convnext_tiny": {
+      "model": "convnext_tiny",
+      "node_id": "cloud_1",
+      "node_type": "cloud",
+      "server_address": "149.165.174.241:8070",
+      "estimated_wait_s": 0.08469567590181656,
+      "estimated_wait_ms": 84.69567590181656,
+      "available": true,
+      "candidates": [
+        {
+          "model": "convnext_tiny",
+          "node_id": "cloud_1",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8070",
+          "estimated_wait_s": 0.08469567590181656,
+          "estimated_wait_ms": 84.69567590181656
+        },
+        {
+          "model": "convnext_tiny",
+          "node_id": "cloud_2",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8071",
+          "estimated_wait_s": 0.12327739658878294,
+          "estimated_wait_ms": 123.27739658878293
+        }
+      ]
+    },
+    "vit_b_16": {
+      "model": "vit_b_16",
+      "node_id": "cloud_2",
+      "node_type": "cloud",
+      "server_address": "149.165.174.241:8071",
+      "estimated_wait_s": 0.27535945197805317,
+      "estimated_wait_ms": 275.3594519780532,
+      "available": true,
+      "candidates": [
+        {
+          "model": "vit_b_16",
+          "node_id": "cloud_1",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8070",
+          "estimated_wait_s": 0.3549478560244706,
+          "estimated_wait_ms": 354.9478560244706
+        },
+        {
+          "model": "vit_b_16",
+          "node_id": "cloud_2",
+          "node_type": "cloud",
+          "server_address": "149.165.174.241:8071",
+          "estimated_wait_s": 0.27535945197805317,
+          "estimated_wait_ms": 275.3594519780532
+        }
+      ]
+    }
+  }
+}

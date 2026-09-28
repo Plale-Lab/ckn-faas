@@ -1,0 +1,24 @@
+row_index,id,selection,executed_models,final_model,old_label,new_label,stop_reason,correction_reason,selection_mode,maximum_changes_requested
+6,REQ-00006,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,bulbul,crayfish,ran_all,Main label did not match the label from the final executed model,static_error,23
+28,REQ-00028,DYSCI E=0.090,['resnet34'],resnet34,sea_snake,bee_eater,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+33,REQ-00002,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,banded_gecko,bald_eagle,ran_all,Main label did not match the label from the final executed model,static_error,23
+43,REQ-00012,DYSCI E=0.090,['resnet34'],resnet34,banded_gecko,black_grouse,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+50,REQ-00019,DYSCI E=0.090,['resnet34'],resnet34,banded_gecko,peacock,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+65,REQ-00034,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,banded_gecko,agama,ran_all,Main label did not match the label from the final executed model,static_error,23
+73,REQ-00002,DYSCI E=0.090,['resnet34'],resnet34,green_snake,indigo_bunting,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+79,REQ-00007,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,green_snake,spotted_salamander,ran_all,Main label did not match the label from the final executed model,static_error,23
+84,REQ-00013,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,green_snake,crayfish,ran_all,Main label did not match the label from the final executed model,static_error,23
+96,REQ-00025,DYSCI E=0.090,['resnet34'],resnet34,green_snake,great_white_shark,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+105,REQ-00034,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,green_snake,whiptail,ran_all,Main label did not match the label from the final executed model,static_error,23
+110,REQ-00039,DYSCI E=0.090,['resnet34'],resnet34,white_stork,toucan,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+112,REQ-00041,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,white_stork,vine_snake,ran_all,Main label did not match the label from the final executed model,static_error,23
+114,REQ-00001,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,green_snake,flatworm,ran_all,Main label did not match the label from the final executed model,static_error,23
+118,REQ-00007,DYSCI E=0.090,['resnet34'],resnet34,green_snake,limpkin,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+124,REQ-00012,DYSCI E=0.090,['resnet34'],resnet34,green_snake,leatherback_turtle,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+138,REQ-00025,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,magpie,ptarmigan,early_exit_with_aggregation_at_vit_b_16,Main label did not match the label from the final executed model,static_error,23
+149,REQ-00034,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,magpie,electric_ray,ran_all,Main label did not match the label from the final executed model,static_error,23
+151,REQ-00036,DYSCI E=0.090,['resnet34'],resnet34,magpie,toucan,early_exit_first_pass=resnet34,Main label did not match the label from the final executed model,static_error,23
+161,REQ-00008,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,magpie,tiger_shark,ran_all,Main label did not match the label from the final executed model,static_error,23
+183,REQ-00031,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,common_newt,electric_ray,early_exit_with_aggregation_at_vit_b_16,Main label did not match the label from the final executed model,static_error,23
+192,REQ-00042,DYSCI E=0.090,['resnet34'],resnet34,common_newt,pot,deadline_stop_before_vit_b_16,Main label did not match the label from the final executed model,static_error,23
+195,REQ-00039,DYSCI E=0.090,"['resnet34', 'vit_b_16']",vit_b_16,bullfrog,water_snake,ran_all,Main label did not match the label from the final executed model,static_error,23

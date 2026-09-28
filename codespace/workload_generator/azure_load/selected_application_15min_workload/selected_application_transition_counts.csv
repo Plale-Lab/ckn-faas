@@ -1,0 +1,13 @@
+current_phase,next_phase,count
+Low,Medium,1483
+Medium,Low,1483
+Medium,High,200
+High,Spike,248
+Spike,High,247
+High,Low,11
+High,Medium,194
+Low,High,6
+Low,Idle,1302
+Idle,Low,1297
+Idle,Medium,5
+Spike,Medium,1

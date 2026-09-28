@@ -1,0 +1,152 @@
+{
+  "edge_1:mobilenet_v3_small": {
+    "node_id": "edge_1",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8079",
+    "model_name": "mobilenet_v3_small",
+    "request_count": 32,
+    "average_wall_latency_ms": 44.300186295004096,
+    "average_rpc_latency_ms": 15.570656250000003,
+    "average_probability": 0.5409827460534871
+  },
+  "edge_1:mobilenet_v2": {
+    "node_id": "edge_1",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8079",
+    "model_name": "mobilenet_v2",
+    "request_count": 32,
+    "average_wall_latency_ms": 53.109261658391915,
+    "average_rpc_latency_ms": 29.7695625,
+    "average_probability": 0.15053196059307083
+  },
+  "edge_1:shufflenet_v2_x1_0": {
+    "node_id": "edge_1",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8079",
+    "model_name": "shufflenet_v2_x1_0",
+    "request_count": 32,
+    "average_wall_latency_ms": 50.17039454833139,
+    "average_rpc_latency_ms": 22.44275,
+    "average_probability": 0.5615200677420944
+  },
+  "edge_1:resnet18": {
+    "node_id": "edge_1",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8079",
+    "model_name": "resnet18",
+    "request_count": 32,
+    "average_wall_latency_ms": 63.41012634220533,
+    "average_rpc_latency_ms": 41.33390625,
+    "average_probability": 0.4705312601290643
+  },
+  "edge_1:resnet34": {
+    "node_id": "edge_1",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8079",
+    "model_name": "resnet34",
+    "request_count": 32,
+    "average_wall_latency_ms": 96.98409635893768,
+    "average_rpc_latency_ms": 72.016,
+    "average_probability": 0.46011802181601524
+  },
+  "edge_2:mobilenet_v3_small": {
+    "node_id": "edge_2",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8081",
+    "model_name": "mobilenet_v3_small",
+    "request_count": 32,
+    "average_wall_latency_ms": 45.659503870410845,
+    "average_rpc_latency_ms": 17.372468750000007,
+    "average_probability": 0.5409827460534871
+  },
+  "edge_2:mobilenet_v2": {
+    "node_id": "edge_2",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8081",
+    "model_name": "mobilenet_v2",
+    "request_count": 32,
+    "average_wall_latency_ms": 69.68261193105718,
+    "average_rpc_latency_ms": 36.70965625,
+    "average_probability": 0.15053196059307083
+  },
+  "edge_2:shufflenet_v2_x1_0": {
+    "node_id": "edge_2",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8081",
+    "model_name": "shufflenet_v2_x1_0",
+    "request_count": 32,
+    "average_wall_latency_ms": 55.27051561512053,
+    "average_rpc_latency_ms": 26.004812500000003,
+    "average_probability": 0.5615200677420944
+  },
+  "edge_2:resnet18": {
+    "node_id": "edge_2",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8081",
+    "model_name": "resnet18",
+    "request_count": 32,
+    "average_wall_latency_ms": 75.26397016044939,
+    "average_rpc_latency_ms": 44.87121875,
+    "average_probability": 0.4705312601290643
+  },
+  "edge_2:resnet34": {
+    "node_id": "edge_2",
+    "node_type": "edge",
+    "server_address": "149.165.175.242:8081",
+    "model_name": "resnet34",
+    "request_count": 32,
+    "average_wall_latency_ms": 94.54868883767631,
+    "average_rpc_latency_ms": 67.05853125000002,
+    "average_probability": 0.46011802181601524
+  },
+  "cloud_1:resnet50": {
+    "node_id": "cloud_1",
+    "node_type": "cloud",
+    "server_address": "149.165.174.241:8070",
+    "model_name": "resnet50",
+    "request_count": 32,
+    "average_wall_latency_ms": 56.632459578395355,
+    "average_rpc_latency_ms": 33.012499999999996,
+    "average_probability": 0.21954287809785455
+  },
+  "cloud_1:resnet101": {
+    "node_id": "cloud_1",
+    "node_type": "cloud",
+    "server_address": "149.165.174.241:8070",
+    "model_name": "resnet101",
+    "request_count": 32,
+    "average_wall_latency_ms": 60.4145899269497,
+    "average_rpc_latency_ms": 39.256843749999994,
+    "average_probability": 0.46507521998137236
+  },
+  "cloud_1:efficientnet_b3": {
+    "node_id": "cloud_1",
+    "node_type": "cloud",
+    "server_address": "149.165.174.241:8070",
+    "model_name": "efficientnet_b3",
+    "request_count": 32,
+    "average_wall_latency_ms": 74.98806116927881,
+    "average_rpc_latency_ms": 49.6359375,
+    "average_probability": 0.5847621688153595
+  },
+  "cloud_1:convnext_tiny": {
+    "node_id": "cloud_1",
+    "node_type": "cloud",
+    "server_address": "149.165.174.241:8070",
+    "model_name": "convnext_tiny",
+    "request_count": 32,
+    "average_wall_latency_ms": 43.11282804701477,
+    "average_rpc_latency_ms": 21.2003125,
+    "average_probability": 0.38424573838710785
+  },
+  "cloud_1:vit_b_16": {
+    "node_id": "cloud_1",
+    "node_type": "cloud",
+    "server_address": "149.165.174.241:8070",
+    "model_name": "vit_b_16",
+    "request_count": 32,
+    "average_wall_latency_ms": 44.99445841065608,
+    "average_rpc_latency_ms": 17.94365625,
+    "average_probability": 0.5594374537467957
+  }
+}

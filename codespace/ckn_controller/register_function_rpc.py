@@ -108,8 +108,8 @@ model_list = [
     "resnet18",
     "resnet34",
     "resnet50",
-    "resnet101",
-    "vit_b_16",
+    # "resnet101",
+    # "vit_b_16",
 ]
 
 SMALL_INSTANCE_MODELS = {"mobilenet_v3_small", "resnet18", "resnet34", "resnet50"}

@@ -1,0 +1,2 @@
+rank,app,rate_bin_seconds,low_upper_rps,medium_upper_rps,high_upper_rps
+1,70b9cea7ca266637479483f517194c402dfe99b5fc2357e6ebac5e715c9a34a2,5.0,7.0,15.8,25.6

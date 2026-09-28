@@ -1,0 +1,7 @@
+policy_label,static_error,theta,models,edge_hit_rate_percent,cloud_hit_rate_percent
+Edge Speculation,0.09,0.95,resnet18 -> resnet34 -> vit_b_16,65.9872611464968,34.01273885350319
+Edge Speculation,0.1,0.8,resnet34 -> mobilenet_v3_small -> resnet101,76.15286624203821,23.84713375796178
+Edge Speculation,0.12,0.6,resnet34 -> resnet18 -> resnet101,85.35031847133759,14.64968152866241
+Sequential Cascade,0.09,0.9,resnet34 -> vit_b_16,68.2547770700637,31.7452229299363
+Sequential Cascade,0.1,0.75,resnet34 -> resnet101,75.49044585987261,24.50955414012739
+Sequential Cascade,0.12,0.55,resnet34 -> convnext_tiny,83.36305732484077,16.63694267515924

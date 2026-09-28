@@ -555,7 +555,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # ---- Adjust this to your folder/pattern ----
-LOG_PATH_PATTERN = "/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/avg_latency_vs_arrival_seq.csv"
+LOG_PATH_PATTERN = "/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/avg_latency_vs_inter_arrival_rate_all.csv"
 OUT_CSV = "avg_latency_vs_arrival_by_maxsize_resp.csv"
 OUT_PNG = "avg_latency_vs_arrival_by_maxsize_resp.png"
 
@@ -751,8 +751,9 @@ def _label_for(pol: str, ms: float, plot_model_name: str = "") -> str:
         return f"Random maximum model set size {ms_int}"
 
     if p in {"greedy", "mode_s", "mode-s", "modes"}:
-        return f"Sequential Case - model set size {ms_int}"
+        # return f"Sequential Case - model set size {ms_int}"
         # return f"Power of Two Choices Case - model set size {ms_int}"
+        return f"MODE-S - max model set size {ms_int}"
 
     if p == "best_acc_1":
         return name if name else "Best-accuracy model"

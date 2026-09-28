@@ -1,0 +1,2 @@
+app,window_start_sec,window_end_sec,request_count,mean_rate_rps,peak_rate_rps,rate_std,rate_cv,burst_ratio,transition_count,idle_bin_count,low_bin_count,medium_bin_count,high_bin_count,idle_fraction,low_threshold_rps,high_threshold_rps,score
+5fb02cfeb979fec16df02d1ece227157238477b19fc6e37554e2e2af6018d3ba,1103283.9208989793,1104183.9208989793,324,0.36000000000000004,10.2,1.3078792559514614,3.6329979331985034,28.33333333333333,52,13,24,21,2,0.21666666666666667,0.13333333333333333,0.3333333333333333,27.82888097467167

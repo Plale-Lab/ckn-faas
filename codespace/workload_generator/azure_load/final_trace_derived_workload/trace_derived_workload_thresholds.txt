@@ -1,0 +1,6 @@
+workload_level trace_derived_definition_rps  mean_observed_rate_rps  median_observed_rate_rps  p95_observed_rate_rps  maximum_observed_rate_rps  observed_bin_count
+          Idle                     rate = 0                   0.000                     0.000                  0.000                      0.000              105149
+           Low             0 < rate <= 1.20                   0.698                     0.600                  1.200                      1.200               13076
+        Medium          1.20 < rate <= 2.40                   1.698                     1.600                  2.400                      2.400                4822
+          High         2.40 < rate <= 13.20                   9.411                    10.600                 13.000                     13.200                3303
+         Spike                 rate > 13.20                  16.461                    14.800                 23.800                     30.200                1056

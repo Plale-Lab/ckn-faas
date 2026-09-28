@@ -1,0 +1,13 @@
+metric,value
+total_requests,476.0
+unique_functions,4.0
+duration_seconds,599.745
+mean_arrival_rate_rps,0.79367064335676
+global_mean_iat_ms,1262.621052631579
+global_median_iat_ms,1000.0
+global_p90_iat_ms,2000.0
+global_p95_iat_ms,3000.0
+global_p99_iat_ms,3000.0
+global_iat_std_ms,916.0613610874386
+global_iat_cv,0.7255235917207035
+global_burstiness_index,-0.15906847614038522

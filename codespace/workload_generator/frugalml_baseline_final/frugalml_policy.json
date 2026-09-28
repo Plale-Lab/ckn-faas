@@ -1,0 +1,9 @@
+{
+  "policy_type": "frugalml_predicted_class_threshold",
+  "base_model": "resnet34",
+  "default_addon_model": "convnext_tiny",
+  "default_threshold": 0.55,
+  "target_accuracy": 0.88,
+  "target_error": 0.12,
+  "class_policies": {}
+}

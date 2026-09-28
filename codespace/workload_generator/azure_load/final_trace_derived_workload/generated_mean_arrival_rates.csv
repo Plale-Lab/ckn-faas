@@ -1,0 +1,6 @@
+phase,bin_count,duration_seconds,request_count,mean_rate_rps,median_rate_rps,p95_rate_rps,maximum_rate_rps
+Idle,21,105.0,0,0.0,0.0,0.0,0.0
+Low,104,520.0,330,0.6346153846153846,0.6,1.2,1.2
+Medium,38,190.0,322,1.6947368421052633,1.6,2.2,2.4
+High,10,50.0,460,9.2,11.8,12.22,12.4
+Spike,7,35.0,615,17.571428571428573,15.2,25.22,25.4

@@ -7,7 +7,7 @@ import multiprocessing as mp
 
 argparser = argparse.ArgumentParser()
 argparser.add_argument(
-    "--repo", help="Repository the image will be in", required=False, default="alfuerst"
+    "--repo", help="Repository the image will be in", required=False, default="plalelab"
 )
 argparser.add_argument(
     "--hub", help="Hub to push docker image too", required=False, default="docker.io"
@@ -105,15 +105,63 @@ def build(path, function_name, dockerfile_base, basename, server):
         shutil.rmtree(os.path.join(path, hooks_dir))
 
 
+# if __name__ == "__main__":
+#     funcs_dir = "./gpu-functions"
+#     target_funcs = ["cnn_image_classification_gpu"]
+#
+#     for server in ["http", "unix"]:
+#         for func_name in target_funcs:
+#             dir = os.path.join(funcs_dir, func_name)
+#             if os.path.isdir(dir):
+#                 build(
+#                     dir,
+#                     func_name,
+#                     "DockerfileCKNFaaS.gpu",
+#                     "iluvatar-action-gpu-base",
+#                     server
+#                 )
 if __name__ == "__main__":
-    funcs_dir = "./gpu-functions"
+    funcs_dir = "./functions_ckn_faaS_gpu"
+    target_funcs = [
+        "ckn_faas_mobilenet_v3_small",
+        "ckn_faas_mobilenet_v2",
+        "ckn_faas_shufflenet_v2_x1_0",
+        "ckn_faas_resnet18",
+        "ckn_faas_resnet34",
+        "ckn_faas_resnet50",
+        "ckn_faas_resnet101",
+        "ckn_faas_efficientnet_b3",
+        "ckn_faas_convnext_tiny",
+        "ckn_faas_vit_b_16",
+    ]
+
     for server in ["http", "unix"]:
-        for func_name in os.listdir(funcs_dir):
-            if os.path.isdir(os.path.join(funcs_dir, func_name)):
-                dir = os.path.join(funcs_dir, func_name)
+        for func_name in target_funcs:
+            dir = os.path.join(funcs_dir, func_name)
+            if os.path.isdir(dir):
                 build(
-                    dir, func_name, "Dockerfile.gpu", "iluvatar-action-gpu-base", server
+                    dir,
+                    func_name,
+                    "DockerfileCKNFaaS.gpu",
+                    "iluvatar-action-gpu-base",
+                    server
                 )
+
+# if __name__ == "__main__":
+#     funcs_dir = "./functions_ckn_faaS_gpu"
+#     target_funcs = ["cnn_image_classification_gpu"]
+#
+#     for server in ["http", "unix"]:
+#         for func_name in target_funcs:
+#             dir = os.path.join(funcs_dir, func_name)
+#             if os.path.isdir(dir):
+#                 build(
+#                     dir,
+#                     func_name,
+#                     "DockerfileCKNFaaS.gpu",
+#                     "iluvatar-action-gpu-base",
+#                     server
+#                 )
 
     # with mp.Pool() as p:
     #   results = []

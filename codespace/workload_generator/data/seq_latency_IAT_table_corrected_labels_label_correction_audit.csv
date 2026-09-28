@@ -1,0 +1,24 @@
+row_index,id,selection,executed_models,final_model,old_label,new_label,stop_reason,correction_reason,selection_mode,maximum_changes_requested
+1108,REQ-00007,baseline=frugalml,['resnet34'],resnet34,chiton,sea_lion,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1117,REQ-00001,baseline=frugalml,['resnet34'],resnet34,goldfish,jellyfish,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1121,REQ-00005,baseline=frugalml,['resnet34'],resnet34,goldfish,stingray,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1125,REQ-00009,baseline=frugalml,['resnet34'],resnet34,goldfish,common_newt,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1134,REQ-00018,baseline=frugalml,['resnet34'],resnet34,bee_eater,limpkin,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1139,REQ-00023,baseline=frugalml,['resnet34'],resnet34,bee_eater,stingray,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1148,REQ-00033,baseline=frugalml,['resnet34'],resnet34,bee_eater,green_snake,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1159,REQ-00031,baseline=frugalml,"['resnet34', 'convnext_tiny']",convnext_tiny,chiton,barn_spider,frugalml_deferred_to_addon=convnext_tiny,Main label did not match the label from the final executed model,baseline,23
+1160,REQ-00000,baseline=frugalml,"['resnet34', 'convnext_tiny']",convnext_tiny,spiny_lobster,mud_turtle,frugalml_deferred_to_addon=convnext_tiny,Main label did not match the label from the final executed model,baseline,23
+1163,REQ-00003,baseline=frugalml,['resnet34'],resnet34,spiny_lobster,black_widow,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1166,REQ-00006,baseline=frugalml,['resnet34'],resnet34,spiny_lobster,whiptail,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1169,REQ-00009,baseline=frugalml,['resnet34'],resnet34,spiny_lobster,oystercatcher,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1170,REQ-00010,baseline=frugalml,['resnet34'],resnet34,spiny_lobster,wolf_spider,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1181,REQ-00021,baseline=frugalml,['resnet34'],resnet34,terrapin,flamingo,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1182,REQ-00022,baseline=frugalml,['resnet34'],resnet34,spiny_lobster,green_lizard,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1183,REQ-00023,baseline=frugalml,['resnet34'],resnet34,terrapin,tiger_shark,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1186,REQ-00026,baseline=frugalml,['resnet34'],resnet34,flamingo,hermit_crab,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1188,REQ-00028,baseline=frugalml,['resnet34'],resnet34,spiny_lobster,hammerhead,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1194,REQ-00034,baseline=frugalml,['resnet34'],resnet34,spiny_lobster,terrapin,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1199,REQ-00004,baseline=frugalml,['resnet34'],resnet34,agama,black_widow,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1208,REQ-00014,baseline=frugalml,['resnet34'],resnet34,agama,green_snake,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1217,REQ-00009,baseline=frugalml,['resnet34'],resnet34,agama,whiptail,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23
+1222,REQ-00029,baseline=frugalml,['resnet34'],resnet34,agama-crested_cockatoo,sulphur-crested_cockatoo,frugalml_base_confidence_pass=resnet34,Main label did not match the label from the final executed model,baseline,23

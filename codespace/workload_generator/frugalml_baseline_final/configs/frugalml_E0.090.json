@@ -1,0 +1,11 @@
+{
+  "error_constraint": 0.09,
+  "target_accuracy": 0.91,
+  "base_model": "resnet34",
+  "default_addon_model": "vit_b_16",
+  "default_threshold": 0.9,
+  "class_policies": {},
+  "metadata": {
+    "policy_type": "starter_global_threshold"
+  }
+}

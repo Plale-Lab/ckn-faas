@@ -1,0 +1,3 @@
+policy_label,theta,models,edge_hit_rate_percent,cloud_hit_rate_percent
+Edge Speculation,0.8,resnet34 -> mobilenet_v3_small -> resnet101,76.15286624203821,23.84713375796178
+Sequential Cascade,0.75,resnet34 -> resnet101,75.49044585987261,24.50955414012739

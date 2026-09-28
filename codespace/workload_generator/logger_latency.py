@@ -37,9 +37,9 @@ def _fmt_num(x, nd=3):
 def log_result(mode, req_id, deadline, iar, response_time, current_time_sec, response):
     os.makedirs("data", exist_ok=True)
     if mode == "vary_deadline":
-        log_path = "/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/actual_n_estimated_latency_M2.csv"
+        log_path = "/workload_generator/data/actual_n_estimated_latency_seq_M3.csv"
     else:
-        log_path = "/Users/agamage/Desktop/D2I/Codes Original/clone main/ckn-faas/codespace/workload_generator/data/actual_n_estimated_latency_M2.csv"
+        log_path = "/workload_generator/data/actual_n_estimated_latency_seq_M3.csv"
 
     write_header = not os.path.exists(log_path)
 

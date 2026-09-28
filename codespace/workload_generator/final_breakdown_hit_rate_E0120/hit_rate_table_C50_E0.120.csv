@@ -1,0 +1,3 @@
+policy_label,theta,models,edge_hit_rate_percent,cloud_hit_rate_percent
+Edge Speculation,0.6,resnet34 -> resnet18 -> resnet101,85.35031847133759,14.64968152866241
+Sequential Cascade,0.55,resnet34 -> convnext_tiny,83.36305732484077,16.63694267515924

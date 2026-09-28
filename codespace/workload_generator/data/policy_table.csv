@@ -1,0 +1,7 @@
+policy,edge_model,cloud_model,threshold,cost,error,estimated_latency_ms
+Sequential,resnet34,vit_b_16,0.90,35,0.12,850
+Sequential,resnet34,convnext_tiny,0.80,50,0.09,720
+Edge Speculation,resnet18+resnet34,resnet101,0.85,50,0.08,620
+Edge Speculation,shufflenet_v2+resnet34,vit_b_16,0.80,75,0.07,590
+Cloud Speculation,resnet34,convnext_tiny,0.80,100,0.09,510
+Cloud Speculation,resnet18,resnet101,0.85,90,0.08,540
